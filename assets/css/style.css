@@ -147,4 +147,31 @@ button {
 }
 button:hover {
   background: linear-gradient(var(--bg-light-slate-blue), var(--bg-light-royal-blue));
+}
+
+@media (min-width: 768px) {
+  .container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .card {
+    display: flex;
+    justify-content: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    border-radius: 32px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  .result__circle {
+    width: 180px;
+    height: 180px;
+  }
+  .result {
+    border-radius: inherit;
+  }
+  .summary__item {
+    gap: 50px;
+  }
 }/*# sourceMappingURL=style.css.map */
