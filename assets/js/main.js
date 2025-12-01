@@ -1,37 +1,60 @@
 // import data json 
-function getData(){
-    var data
-    fetch('data.json')
-        .then(Response => Response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error loading JSON:', error))
+async function getData(){
+    const url = 'data.json'
+    
+    try {
+        const response = await fetch(url)
+        if (!response.ok){
+            throw new Error(`Response status: ${response.status}`)
+        }
+            
+        const result = await response.json()
+        console.log(result)
 
-    return data
+        return result
+    } catch (error) {
+        console.error(error.message)
+    }
 }
 
-const data = getData()
 
-data.forEach(item => {
-    // create elements
-    const container = document.createElement('div');
-    container.classList.add('result-item', item.category.toLowerCase());
+async function init(){
+    const data = await getData()
 
-    const icon = document.createElement('img');
-    icon.src = `assets/images/icon-${item.category.toLowerCase()}.svg`;
-    icon.alt = `${item.category} icon`;
+    data.forEach(item => {
+        // create elements
+        const container = document.createElement('div')
+        container.classList.add(`summary__item--${item.category.toLowerCase()}`)
+        container.classList.add('summary__item')
 
-    const category = document.createElement('span');
-    category.classList.add('category-name');
-    category.textContent = item.category;
+        const info = document.createElement('div')
+        info.classList.add('summary__item-info')
 
-    const score = document.createElement('span');
-    score.classList.add('category-score');
-    score.textContent = item.score;
+        const icon = document.createElement('img')
+        const path = (item.icon).slice(2) // remove ./ from path 
+        icon.src = path
+        icon.alt = `${item.category} icon`
 
-    // append elements
-    container.appendChild(icon);
-    container.appendChild(category);
-    container.appendChild(score);
+        const category = document.createElement('p')
+        category.classList.add('category-name')
+        category.textContent = item.category
 
-    document.querySelector('.results-summary .results-container').appendChild(container);
-});
+        const score = document.createElement('span')
+        score.classList.add('summary__item-score')
+        score.textContent = `${item.score}/ 100`
+
+        // append elements
+        info.appendChild(icon)
+        info.appendChild(category)
+        container.appendChild(info)
+        container.appendChild(score)
+        document.querySelector('.summary').appendChild(container)
+    })
+
+    const button = document.createElement('button')
+    button.textContent = 'Continue'
+    button.ariaLabel = 'Continue'
+    document.querySelector('.summary').appendChild(button)
+}
+
+init()
