@@ -1,8 +1,12 @@
 :root {
-  --ligth-red: hsl(0, 100%, 67%);
+  --light-red: hsl(0, 100%, 67%);
   --orangey-yellow: hsl(39, 100%, 56%);
   --green-teal: hsl(166, 100%, 37%);
   --cobalt-blue: hsl(234, 85%, 45%);
+  --light-red-alpha: hsla(0, 100%, 67%, 0.1);
+  --orangey-yellow-alpha: hsla(39, 100%, 56%, 0.1);
+  --gren-teal-alpha: hsla(166, 100%, 37%, 0.1);
+  --cobalt-blue-alpha: hsla(234, 85%, 45%, 0.1);
   --bg-light-slate-blue: hsl(252, 100%, 67%);
   --bg-light-royal-blue: hsl(241, 81%, 54%);
   --circle-violet-blue: hsla(256, 72%, 46%, 1);
@@ -46,7 +50,6 @@ h2 {
 h3 {
   font-size: 24px;
   font-weight: 700;
-  color: black;
 }
 
 .container {
@@ -108,17 +111,20 @@ h3 {
   background: aliceblue;
 }
 .summary__item--reaction {
-  color: var(--ligth-red);
-  background: hsla(var(--ligth-red), 0.1);
+  color: var(--light-red);
+  background: var(--light-red-alpha);
 }
 .summary__item--memory {
   color: var(--orangey-yellow);
+  background: var(--orangey-yellow-alpha);
 }
 .summary__item--verbal {
   color: var(--green-teal);
+  background: var(--gren-teal-alpha);
 }
 .summary__item--visual {
   color: var(--cobalt-blue);
+  background-color: var(--cobalt-blue-alpha);
 }
 .summary__item-score {
   font-weight: 700;
