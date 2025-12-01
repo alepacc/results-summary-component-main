@@ -54,6 +54,7 @@ async function init(){
     const button = document.createElement('button')
     button.textContent = 'Continue'
     button.ariaLabel = 'Continue'
+    button.type = "button"
     document.querySelector('.summary').appendChild(button)
 }
 
