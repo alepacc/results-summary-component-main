@@ -41,7 +41,7 @@ async function init(){
 
         const score = document.createElement('span')
         score.classList.add('summary__item-score')
-        score.textContent = `${item.score}/ 100`
+        score.textContent = `${item.score} / 100`
 
         // append elements
         info.appendChild(icon)
